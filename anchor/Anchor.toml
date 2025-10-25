@@ -6,10 +6,10 @@ resolution = true
 skip-lint = false
 
 [programs.devnet]
-BuckyBank = "552NAsVPEGfW2pZ8wPdg5Apk77E7YCKeVH6rj8C46ctN"
+BuckyBank = "5uykfXh94mwTz2Vxb2Y7RpntvanSkcWq4hENoDM4duVf"
 
 [programs.localnet]
-BuckyBank = "552NAsVPEGfW2pZ8wPdg5Apk77E7YCKeVH6rj8C46ctN"
+BuckyBank = "5uykfXh94mwTz2Vxb2Y7RpntvanSkcWq4hENoDM4duVf"
 
 [registry]
 url = "https://api.apr.dev"

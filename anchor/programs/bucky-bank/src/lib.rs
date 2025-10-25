@@ -14,7 +14,7 @@ use instructions::request_withdrawal::*;
 use instructions::approve_withdrawal::*;
 use instructions::withdraw::*;
 
-declare_id!("552NAsVPEGfW2pZ8wPdg5Apk77E7YCKeVH6rj8C46ctN");
+declare_id!("5uykfXh94mwTz2Vxb2Y7RpntvanSkcWq4hENoDM4duVf");
 
 #[program]
 pub mod bucky_bank {
