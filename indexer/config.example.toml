@@ -1,0 +1,33 @@
+# BuckyBank Indexer 配置文件示例 (Solana)
+
+[database]
+# PostgreSQL 数据库连接字符串
+url = "postgresql://postgres:password@localhost:5432/bucky_bank"
+# 最大连接数
+max_connections = 10
+# 最小连接数
+min_connections = 2
+# 连接超时时间（秒）
+connection_timeout_seconds = 30
+
+[solana]
+# Solana RPC 端点
+rpc_url = "https://api.devnet.solana.com"
+# BuckyBank 程序 ID (从 anchor/programs/bucky-bank/target/idl/bucky_bank.json 获取)
+program_id = "YOUR_PROGRAM_ID_HERE"
+# 查询限制
+query_limit = 50
+
+[server]
+# 健康检查服务器监听地址
+host = "127.0.0.1"
+# 健康检查服务器监听端口
+port = 8080
+
+[indexing]
+# 轮询间隔（秒）
+poll_interval_seconds = 30
+# 批处理大小
+batch_size = 100
+# 最大重试次数
+max_retries = 3
