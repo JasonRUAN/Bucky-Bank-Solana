@@ -1,0 +1,1048 @@
+{
+  "address": "552NAsVPEGfW2pZ8wPdg5Apk77E7YCKeVH6rj8C46ctN",
+  "metadata": {
+    "name": "bucky_bank",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Created with Anchor"
+  },
+  "instructions": [
+    {
+      "name": "approve_withdrawal",
+      "discriminator": [
+        75,
+        48,
+        146,
+        122,
+        201,
+        158,
+        210,
+        123
+      ],
+      "accounts": [
+        {
+          "name": "bucky_bank",
+          "writable": true
+        },
+        {
+          "name": "withdrawal_request",
+          "writable": true
+        },
+        {
+          "name": "parent",
+          "writable": true,
+          "signer": true
+        }
+      ],
+      "args": [
+        {
+          "name": "approve",
+          "type": "bool"
+        },
+        {
+          "name": "reason",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "create_bucky_bank",
+      "discriminator": [
+        253,
+        239,
+        86,
+        153,
+        43,
+        27,
+        85,
+        218
+      ],
+      "accounts": [
+        {
+          "name": "owner",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "bank_global_stats",
+          "writable": true
+        },
+        {
+          "name": "bucky_bank",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "bank_global_stats.total_bucky_banks",
+                "account": "BankGlobalStatsInfo"
+              }
+            ]
+          }
+        },
+        {
+          "name": "user_bucky_banks",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  117,
+                  115,
+                  101,
+                  114,
+                  95,
+                  98,
+                  117,
+                  99,
+                  107,
+                  121,
+                  95,
+                  98,
+                  97,
+                  110,
+                  107,
+                  115
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "owner"
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "target_amount",
+          "type": "u64"
+        },
+        {
+          "name": "duration_days",
+          "type": "u64"
+        },
+        {
+          "name": "child_address",
+          "type": "pubkey"
+        }
+      ]
+    },
+    {
+      "name": "deposit",
+      "discriminator": [
+        242,
+        35,
+        198,
+        137,
+        82,
+        225,
+        242,
+        182
+      ],
+      "accounts": [
+        {
+          "name": "bank_global_stats",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  103,
+                  108,
+                  111,
+                  98,
+                  97,
+                  108,
+                  95,
+                  115,
+                  116,
+                  97,
+                  116,
+                  115
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "bucky_bank",
+          "writable": true
+        },
+        {
+          "name": "depositor",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "deposit_balance",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "initialize_bank_global_stats",
+      "discriminator": [
+        143,
+        138,
+        143,
+        246,
+        111,
+        29,
+        108,
+        54
+      ],
+      "accounts": [
+        {
+          "name": "owner",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "bank_global_stats",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  103,
+                  108,
+                  111,
+                  98,
+                  97,
+                  108,
+                  95,
+                  115,
+                  116,
+                  97,
+                  116,
+                  115
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "request_withdrawal",
+      "discriminator": [
+        251,
+        85,
+        121,
+        205,
+        56,
+        201,
+        12,
+        177
+      ],
+      "accounts": [
+        {
+          "name": "bucky_bank",
+          "writable": true
+        },
+        {
+          "name": "withdrawal_request",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  119,
+                  105,
+                  116,
+                  104,
+                  100,
+                  114,
+                  97,
+                  119,
+                  97,
+                  108,
+                  95,
+                  114,
+                  101,
+                  113,
+                  117,
+                  101,
+                  115,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "bucky_bank"
+              },
+              {
+                "kind": "account",
+                "path": "requester"
+              }
+            ]
+          }
+        },
+        {
+          "name": "requester",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        },
+        {
+          "name": "reason",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "withdraw",
+      "discriminator": [
+        183,
+        18,
+        70,
+        156,
+        148,
+        109,
+        161,
+        34
+      ],
+      "accounts": [
+        {
+          "name": "bucky_bank",
+          "writable": true
+        },
+        {
+          "name": "withdrawal_request",
+          "writable": true
+        },
+        {
+          "name": "child",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    }
+  ],
+  "accounts": [
+    {
+      "name": "BankGlobalStatsInfo",
+      "discriminator": [
+        99,
+        201,
+        148,
+        111,
+        113,
+        116,
+        70,
+        181
+      ]
+    },
+    {
+      "name": "BuckyBankInfo",
+      "discriminator": [
+        30,
+        156,
+        155,
+        19,
+        76,
+        154,
+        184,
+        226
+      ]
+    },
+    {
+      "name": "UserBuckyBanksInfo",
+      "discriminator": [
+        81,
+        225,
+        128,
+        17,
+        109,
+        63,
+        48,
+        203
+      ]
+    },
+    {
+      "name": "WithdrawalRequestInfo",
+      "discriminator": [
+        147,
+        251,
+        173,
+        62,
+        167,
+        179,
+        42,
+        159
+      ]
+    }
+  ],
+  "events": [
+    {
+      "name": "BuckyBankCreated",
+      "discriminator": [
+        94,
+        162,
+        71,
+        209,
+        203,
+        17,
+        36,
+        29
+      ]
+    },
+    {
+      "name": "DepositMade",
+      "discriminator": [
+        210,
+        201,
+        130,
+        183,
+        244,
+        203,
+        155,
+        199
+      ]
+    },
+    {
+      "name": "EventWithdrawalApproved",
+      "discriminator": [
+        110,
+        116,
+        106,
+        81,
+        22,
+        92,
+        18,
+        109
+      ]
+    },
+    {
+      "name": "EventWithdrawalCompleted",
+      "discriminator": [
+        73,
+        44,
+        220,
+        56,
+        116,
+        7,
+        126,
+        222
+      ]
+    },
+    {
+      "name": "EventWithdrawalRejected",
+      "discriminator": [
+        86,
+        247,
+        83,
+        201,
+        215,
+        46,
+        197,
+        129
+      ]
+    },
+    {
+      "name": "EventWithdrawalRequested",
+      "discriminator": [
+        127,
+        108,
+        117,
+        193,
+        156,
+        83,
+        208,
+        230
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "DepositTooSmall",
+      "msg": "Deposit amount must be at least 0.01 SOL"
+    },
+    {
+      "code": 6001,
+      "name": "InsufficientFunds",
+      "msg": "Insufficient funds for withdrawal"
+    },
+    {
+      "code": 6002,
+      "name": "InvalidName",
+      "msg": "存钱罐名称无效"
+    },
+    {
+      "code": 6003,
+      "name": "InvalidAmount",
+      "msg": "目标金额无效"
+    },
+    {
+      "code": 6004,
+      "name": "InvalidDeadline",
+      "msg": "截止日期无效"
+    },
+    {
+      "code": 6005,
+      "name": "Overflow",
+      "msg": "数值溢出"
+    },
+    {
+      "code": 6006,
+      "name": "BankNotActive",
+      "msg": "存钱罐不处于活跃状态"
+    },
+    {
+      "code": 6007,
+      "name": "NotChild",
+      "msg": "只有孩子可以存款"
+    },
+    {
+      "code": 6008,
+      "name": "InvalidDepositAmount",
+      "msg": "存款金额无效"
+    },
+    {
+      "code": 6009,
+      "name": "NotChildForWithdrawal",
+      "msg": "只有孩子可以请求取款"
+    },
+    {
+      "code": 6010,
+      "name": "InvalidWithdrawalAmount",
+      "msg": "取款金额无效"
+    },
+    {
+      "code": 6011,
+      "name": "ReasonTooLong",
+      "msg": "取款原因过长"
+    },
+    {
+      "code": 6012,
+      "name": "NotParent",
+      "msg": "只有家长可以审批取款请求"
+    },
+    {
+      "code": 6013,
+      "name": "InvalidRequestStatus",
+      "msg": "取款请求状态无效"
+    },
+    {
+      "code": 6014,
+      "name": "RequestNotFound",
+      "msg": "取款请求不存在"
+    }
+  ],
+  "types": [
+    {
+      "name": "BankGlobalStatsInfo",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "total_bucky_banks",
+            "type": "u64"
+          },
+          {
+            "name": "total_deposits",
+            "type": "u64"
+          },
+          {
+            "name": "total_withdrawals",
+            "type": "u64"
+          },
+          {
+            "name": "admin",
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "BuckyBankCreated",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "bucky_bank_id",
+            "type": "pubkey"
+          },
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "parent",
+            "type": "pubkey"
+          },
+          {
+            "name": "child",
+            "type": "pubkey"
+          },
+          {
+            "name": "target_amount",
+            "type": "u64"
+          },
+          {
+            "name": "created_at_ms",
+            "type": "u64"
+          },
+          {
+            "name": "deadline_ms",
+            "type": "u64"
+          },
+          {
+            "name": "duration_days",
+            "type": "u64"
+          },
+          {
+            "name": "current_balance",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "BuckyBankInfo",
+      "docs": [
+        "存钱罐对象"
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "parent",
+            "docs": [
+              "存钱罐创建方地址"
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "config",
+            "docs": [
+              "存钱罐配置"
+            ],
+            "type": {
+              "defined": {
+                "name": "Config"
+              }
+            }
+          },
+          {
+            "name": "current_balance",
+            "docs": [
+              "当前存款余额（单位：lamports）"
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "status",
+            "docs": [
+              "存钱罐状态"
+            ],
+            "type": {
+              "defined": {
+                "name": "BuckyBankStatus"
+              }
+            }
+          },
+          {
+            "name": "deposit_count",
+            "docs": [
+              "存款次数"
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "created_at_ms",
+            "docs": [
+              "存钱罐创建时间（毫秒）"
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "last_deposit_ms",
+            "docs": [
+              "最近一次存款时间（毫秒）"
+            ],
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "BuckyBankStatus",
+      "docs": [
+        "存钱罐状态枚举"
+      ],
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Active"
+          },
+          {
+            "name": "Completed"
+          },
+          {
+            "name": "Failed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Config",
+      "docs": [
+        "存钱罐配置"
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "name",
+            "docs": [
+              "存钱罐名称"
+            ],
+            "type": "string"
+          },
+          {
+            "name": "target_amount",
+            "docs": [
+              "目标存款金额（单位：lamports）"
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "deadline_ms",
+            "docs": [
+              "存款截止时间戳（毫秒）"
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "child_address",
+            "docs": [
+              "存钱罐使用方地址"
+            ],
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "DepositMade",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "bucky_bank_id",
+            "type": "pubkey"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          },
+          {
+            "name": "depositor",
+            "type": "pubkey"
+          },
+          {
+            "name": "created_at_ms",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "EventWithdrawalApproved",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "request_id",
+            "type": "pubkey"
+          },
+          {
+            "name": "bucky_bank_id",
+            "type": "pubkey"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          },
+          {
+            "name": "approved_by",
+            "type": "pubkey"
+          },
+          {
+            "name": "requester",
+            "type": "pubkey"
+          },
+          {
+            "name": "reason",
+            "type": "string"
+          },
+          {
+            "name": "created_at_ms",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "EventWithdrawalCompleted",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "request_id",
+            "type": "pubkey"
+          },
+          {
+            "name": "bucky_bank_id",
+            "type": "pubkey"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          },
+          {
+            "name": "left_balance",
+            "type": "u64"
+          },
+          {
+            "name": "withdrawer",
+            "type": "pubkey"
+          },
+          {
+            "name": "created_at_ms",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "EventWithdrawalRejected",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "request_id",
+            "type": "pubkey"
+          },
+          {
+            "name": "bucky_bank_id",
+            "type": "pubkey"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          },
+          {
+            "name": "requester",
+            "type": "pubkey"
+          },
+          {
+            "name": "rejected_by",
+            "type": "pubkey"
+          },
+          {
+            "name": "reason",
+            "type": "string"
+          },
+          {
+            "name": "created_at_ms",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "EventWithdrawalRequested",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "request_id",
+            "type": "pubkey"
+          },
+          {
+            "name": "bucky_bank_id",
+            "type": "pubkey"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          },
+          {
+            "name": "requester",
+            "type": "pubkey"
+          },
+          {
+            "name": "reason",
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "type": "u8"
+          },
+          {
+            "name": "approved_by",
+            "type": "pubkey"
+          },
+          {
+            "name": "created_at_ms",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "UserBuckyBanksInfo",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "bucky_bank_ids",
+            "type": {
+              "vec": "pubkey"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "WithdrawalRequestInfo",
+      "docs": [
+        "取款请求对象"
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "bucky_bank_id",
+            "docs": [
+              "存钱罐 ID"
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "requester",
+            "docs": [
+              "请求者地址（孩子）"
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "amount",
+            "docs": [
+              "取款金额（单位：lamports）"
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "reason",
+            "docs": [
+              "取款原因"
+            ],
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "docs": [
+              "取款请求状态"
+            ],
+            "type": {
+              "defined": {
+                "name": "WithdrawalStatus"
+              }
+            }
+          },
+          {
+            "name": "approved_by",
+            "docs": [
+              "审批者地址（家长）"
+            ],
+            "type": "pubkey"
+          },
+          {
+            "name": "created_at_ms",
+            "docs": [
+              "创建时间（毫秒）"
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "approved_at_ms",
+            "docs": [
+              "审批时间（毫秒）"
+            ],
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "WithdrawalStatus",
+      "docs": [
+        "取款请求状态枚举"
+      ],
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Pending"
+          },
+          {
+            "name": "Approved"
+          },
+          {
+            "name": "Rejected"
+          },
+          {
+            "name": "Completed"
+          }
+        ]
+      }
+    }
+  ]
+}
