@@ -609,24 +609,24 @@ export default function ChildPiggyBank() {
         );
     }
 
-    // // 如果没有存钱罐
-    // if (!piggyBanks.length) {
-    //     return (
-    //         <div className="flex flex-col items-center justify-center min-h-screen p-8">
-    //             <Card className="w-full max-w-md bg-white/90 backdrop-blur-md border-2 border-purple-500/20">
-    //                 <CardContent className="p-8 text-center">
-    //                     <PiggyBankIcon className="w-16 h-16 mx-auto mb-4 text-gray-400" />
-    //                     <h2 className="text-2xl font-bold text-gray-800 mb-4">
-    //                         暂无存钱罐
-    //                     </h2>
-    //                     <p className="text-gray-600 mb-4">
-    //                         您还没有任何存钱罐，请联系家长为您创建一个存钱罐。
-    //                     </p>
-    //                 </CardContent>
-    //             </Card>
-    //         </div>
-    //     );
-    // }
+    // 如果没有存钱罐
+    if (!piggyBanks.length) {
+        return (
+            <div className="flex flex-col items-center justify-center min-h-screen p-8">
+                <Card className="w-full max-w-md bg-white/90 backdrop-blur-md border-2 border-purple-500/20">
+                    <CardContent className="p-8 text-center">
+                        <PiggyBankIcon className="w-16 h-16 mx-auto mb-4 text-gray-400" />
+                        <h2 className="text-2xl font-bold text-gray-800 mb-4">
+                            暂无存钱罐
+                        </h2>
+                        <p className="text-gray-600 mb-4">
+                            您还没有任何存钱罐，请联系家长为您创建一个存钱罐。
+                        </p>
+                    </CardContent>
+                </Card>
+            </div>
+        );
+    }
 
     // 如果没有选择存钱罐，显示存钱罐列表
     if (!selectedPiggyBank) {
