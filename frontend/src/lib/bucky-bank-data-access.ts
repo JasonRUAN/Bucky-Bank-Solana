@@ -3,7 +3,7 @@ import { Cluster, PublicKey } from "@solana/web3.js";
 import { useMemo } from "react";
 import { useCluster } from "@/providers/ClusterProvider";
 import { useAnchorProvider } from "@/providers/SolanaProvider";
-import { getBuckyBankProgram, getBuckyBankProgramId } from "@project/anchor";
+import { getBuckyBankProgram, getBuckyBankProgramId } from "@/lib/anchor-exports";
 
 const BANK_GLOBAL_STATS_SEED = "global_stats";
 const USER_BUCKY_BANKS_SEED = "user_bucky_banks";
