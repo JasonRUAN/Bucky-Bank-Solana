@@ -30,7 +30,7 @@ export function getBuckyBankProgramId(cluster: Cluster) {
     case "devnet":
     case "testnet":
       // This is the program ID for the Counter program on devnet and testnet.
-      return new PublicKey("552NAsVPEGfW2pZ8wPdg5Apk77E7YCKeVH6rj8C46ctN");
+      return new PublicKey("2N4emW88bMtPELSz6s62oTt48enm2yo8KbSdk9BeGPBG");
     case "mainnet-beta":
     default:
       return bucky_bank_PROGRAM_ID;
