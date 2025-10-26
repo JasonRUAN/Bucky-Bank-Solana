@@ -36,13 +36,20 @@ export function useRequestWithdrawal() {
             console.log(`Reason: ${reason}`);
             console.log(`Requester: ${provider.publicKey}`);
 
-            // 生成 withdrawal_request PDA
+            // 获取存钱罐状态以获取 withdrawal_request_counter
             const buckyBankPublicKey = new PublicKey(buckyBankId);
+            const buckyBankAccount = await program.account.buckyBankInfo.fetch(buckyBankPublicKey);
+            
+            // 生成 withdrawal_request PDA（包含计数器）
+            const counterBuffer = Buffer.alloc(8);
+            counterBuffer.writeBigUInt64LE(BigInt(buckyBankAccount.withdrawalRequestCounter.toString()), 0);
+            
             const [withdrawalRequestPDA] = PublicKey.findProgramAddressSync(
                 [
                     Buffer.from("withdrawal_request"),
                     buckyBankPublicKey.toBuffer(),
                     provider.publicKey.toBuffer(),
+                    counterBuffer,
                 ],
                 programId
             );
