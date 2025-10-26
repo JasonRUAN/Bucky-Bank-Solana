@@ -7,11 +7,11 @@ pub mod events;
 pub mod instructions;
 pub mod state;
 
-use instructions::approve_withdrawal::*;
+use instructions::initialize_bank_global_stats::*;
 use instructions::create_bucky_bank::*;
 use instructions::deposit::*;
-use instructions::initialize_bank_global_stats::*;
 use instructions::request_withdrawal::*;
+use instructions::approve_withdrawal::*;
 use instructions::withdraw::*;
 
 declare_id!("2N4emW88bMtPELSz6s62oTt48enm2yo8KbSdk9BeGPBG");
@@ -34,7 +34,10 @@ pub mod bucky_bank {
         _create_bucky_bank(ctx, name, target_amount, duration_days, child_address)
     }
 
-    pub fn deposit(ctx: Context<Deposit>, deposit_balance: u64) -> Result<()> {
+    pub fn deposit(
+        ctx: Context<Deposit>,
+        deposit_balance: u64,
+    ) -> Result<()> {
         _deposit(ctx, deposit_balance)
     }
 

@@ -43,6 +43,8 @@ pub struct BuckyBankInfo {
     pub status: BuckyBankStatus, // 0-进行中、1-已完成、2-失败
     /// 存款次数
     pub deposit_count: u64,
+    /// 取款请求计数器
+    pub withdrawal_request_counter: u64,
     /// 存钱罐创建时间（毫秒）
     pub created_at_ms: u64,
     /// 最近一次存款时间（毫秒）

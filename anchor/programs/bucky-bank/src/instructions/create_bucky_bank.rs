@@ -71,6 +71,7 @@ pub fn _create_bucky_bank(
     bucky_bank.current_balance = 0;
     bucky_bank.status = BuckyBankStatus::Active;
     bucky_bank.deposit_count = 0;
+    bucky_bank.withdrawal_request_counter = 0;
     bucky_bank.created_at_ms = current_time_ms;
     bucky_bank.last_deposit_ms = current_time_ms;
 

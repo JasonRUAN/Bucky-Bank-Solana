@@ -18,6 +18,10 @@ pub struct ApproveWithdrawal<'info> {
 }
 
 /// 家长审批取款请求
+/// 
+/// # 参数
+/// - `approve`: true 表示批准，false 表示拒绝
+/// - `reason`: 审批原因
 pub fn _approve_withdrawal(
     ctx: Context<ApproveWithdrawal>,
     approve: bool,
@@ -30,7 +34,10 @@ pub fn _approve_withdrawal(
     let withdrawal_request = &mut ctx.accounts.withdrawal_request;
 
     // 验证权限和状态
-    require!(sender == bucky_bank.parent, ErrorCode::NotParent);
+    require!(
+        sender == bucky_bank.parent,
+        ErrorCode::NotParent
+    );
 
     require!(
         withdrawal_request.status == WithdrawalStatus::Pending,

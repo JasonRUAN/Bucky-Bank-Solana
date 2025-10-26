@@ -19,6 +19,7 @@ pub struct RequestWithdrawal<'info> {
             WITHDRAWAL_REQUEST_SEED,
             bucky_bank.key().as_ref(),
             requester.key().as_ref(),
+            &bucky_bank.withdrawal_request_counter.to_le_bytes(),
         ],
         bump,
     )]
@@ -39,7 +40,7 @@ pub fn _request_withdrawal(
     let sender = ctx.accounts.requester.key();
     let current_time_ms = Clock::get()?.unix_timestamp as u64 * 1000;
 
-    let bucky_bank = &ctx.accounts.bucky_bank;
+    let bucky_bank = &mut ctx.accounts.bucky_bank;
 
     // 验证权限和状态
     require!(
@@ -67,6 +68,9 @@ pub fn _request_withdrawal(
     withdrawal_request.approved_by = bucky_bank.parent;
     withdrawal_request.created_at_ms = current_time_ms;
     withdrawal_request.approved_at_ms = 0;
+
+    // 增加取款请求计数器
+    bucky_bank.withdrawal_request_counter += 1;
 
     // 发送事件
     emit!(EventWithdrawalRequested {
